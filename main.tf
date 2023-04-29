@@ -80,11 +80,10 @@ resource "null_resource" "install_argocd" {
   provisioner "local-exec" {
     command = <<EOF
       
-      helm repo add argo-cd https://argoproj.github.io/argo-helm
-      helm dep update charts/argo-cd/  
-      helm install argo-cd charts/argo-cd/
-  
-  
+      kubectl apply -f application-crd.yaml
+      kubectl create namespace argocd
+      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+      
   EOF
   }
   
