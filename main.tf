@@ -75,7 +75,7 @@ provider "helm" {
 }
 
 
-resource "helm_release" "argocd" {
+resource "null_resource" "install_argocd" {
   
   provisioner "local-exec" {
     command = <<EOF
