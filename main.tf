@@ -79,7 +79,9 @@ resource "null_resource" "install_argocd" {
   
   provisioner "local-exec" {
     command = <<EOF
-    
+      
+      helm repo add argo-cd https://argoproj.github.io/argo-helm
+      helm dep update charts/argo-cd/  
       helm install argo-cd charts/argo-cd/
   
   
