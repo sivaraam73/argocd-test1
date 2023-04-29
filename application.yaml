@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test-argo-application
+  name: prometheus
   namespace: argocd
   
 spec:
@@ -10,11 +10,11 @@ spec:
   source:
     repoURL: https://github.com/sivaraam73/argocd-test1.git
     targetRevision: HEAD
-    path: app
+    path: apps
     
   destination:
     server: https://kubernetes.default.svc
-    namespace: test-apps
+    namespace: monitoring
     
   syncPolicy:
     syncOptions:
