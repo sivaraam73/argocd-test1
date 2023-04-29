@@ -84,9 +84,9 @@ resource "helm_release" "argocd" {
   version          = "5.28.0"
   create_namespace = true
 
-  values = [
-    file("argocd/application.yaml")
-  ]
+  # values = [
+  #   file("argocd/application.yaml")
+  # ]
   
   depends_on = [kind_cluster.default]
   
