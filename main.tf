@@ -76,17 +76,16 @@ provider "helm" {
 
 
 resource "helm_release" "argocd" {
-  name  = "argocd"
-
-  repository       = "https://argoproj.github.io/argo-helm"
-  chart            = "argo-cd"
-  namespace        = "argocd"
-  version          = "5.28.0"
-  create_namespace = true
-
-  # values = [
-  #   file("argocd/application.yaml")
-  # ]
+  
+  provisioner "local-exec" {
+    command = <<EOF
+    
+      helm install argo-cd charts/argo-cd/
+  
+  
+  EOF
+  }
+  
   
   depends_on = [kind_cluster.default]
   
