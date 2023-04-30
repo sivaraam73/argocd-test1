@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: argocd-test1apps
   namespace: argocd
   
 spec:
@@ -14,7 +14,7 @@ spec:
     
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: default
     
   syncPolicy:
     syncOptions:
