@@ -80,12 +80,13 @@ resource "null_resource" "install_argocd" {
   provisioner "local-exec" {
     command = <<EOF
       
-      
       kubectl create namespace argocd
       kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
       kubectl apply -f application.yaml
       kubectl apply -f application-crd.yaml
-      kubectl apply -f cert-manager.crds.yaml
+      kubectl apply -f cert-manager-crds.yaml
+      kubectl apply -f deploy-ingress-nginx-crd.yaml
+      kubectl create -f letsencrypt-staging.yaml
   EOF
   }
   
