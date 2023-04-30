@@ -87,7 +87,7 @@ resource "null_resource" "install_argocd" {
       kubectl apply -f cert-manager-crds.yaml
       kubectl apply -f deploy-ingress-nginx-crd.yaml
       kubectl create -f letsencrypt-staging.yaml
-      
+      kubectl apply -f argocd-cm.yaml
   EOF
   }
   
